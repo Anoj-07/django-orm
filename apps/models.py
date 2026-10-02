@@ -7,6 +7,9 @@ class Company(models.Model):
     code = models.CharField(max_length=20, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Branch(models.Model):
     company = models.ForeignKey(
@@ -15,6 +18,9 @@ class Branch(models.Model):
     name = models.CharField(max_length=150)
     location = models.CharField(max_length=200)
     is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
@@ -29,6 +35,9 @@ class Product(models.Model):
     reorder_level = models.IntegerField(default=10)
     is_active = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Customer(models.Model):
     company = models.ForeignKey(
@@ -37,6 +46,9 @@ class Customer(models.Model):
     name = models.CharField(max_length=150)
     phone = models.CharField(max_length=20)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Sale(models.Model):
@@ -50,3 +62,6 @@ class Sale(models.Model):
     unit_price = models.DecimalField(max_digits=12, decimal_places=2)
     discount = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     sold_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.product.name} => {self.customer.name} => {self.quantity}"

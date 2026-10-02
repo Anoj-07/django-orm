@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 DJANGO_APPS = [
+    "unfold",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -39,7 +40,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-PROJECT_APPS = ["apps", "custom_dj_cmd"]
+PROJECT_APPS = ["apps", "custom_dj_cmd", "resturent_mgment_sys"]
 
 THIRD_PARTY_APPS = [
     "rest_framework",
@@ -137,5 +138,74 @@ STATIC_URL = "static/"
 MAILERS = {
     "default": {
         "BACKEND": "django.core.mail.backends.console.EmailBackend",
+    },
+}
+
+# Django UnFold
+UNFOLD = {
+    "SITE_TITLE": "Restaurant Management",
+    "SITE_HEADER": "Restaurant Management",
+    "SITE_SUBHEADER": "Management Dashboard",
+    "SITE_SYMBOL": "restaurant",
+    "THEME": "dark",
+    "BORDER_RADIUS": "12px",
+    "SIDEBAR": {
+        "show_search": True,
+        "show_all_applications": False,
+        "navigation": [
+            # {
+            #     "title": "Main",
+            #     "separator": True,
+            #     "items": [
+            #         {
+            #             "title": "Dashboard",
+            #             "icon": "dashboard",
+            #             "link": "/admin/",
+            #         },
+            #     ],
+            # },
+            {
+                "title": "Management",
+                "separator": True,
+                "items": [
+                    {
+                        "title": "Companies",
+                        "icon": "business",
+                        "link": "/admin/apps/company/",
+                    },
+                    {
+                        "title": "Branches",
+                        "icon": "store",
+                        "link": "/admin/apps/branch/",
+                    },
+                    {
+                        "title": "Customers",
+                        "icon": "people",
+                        "link": "/admin/apps/customer/",
+                    },
+                    {
+                        "title": "Products",
+                        "icon": "inventory_2",
+                        "link": "/admin/apps/product/",
+                    },
+                    {
+                        "title": "Sales",
+                        "icon": "point_of_sale",
+                        "link": "/admin/apps/sale/",
+                    },
+                ],
+            },
+            {
+                "title": "Restaurant Management",
+                "separator": True,
+                "items": [
+                    {
+                        "title": "Restaurant",
+                        "icon": "business",
+                        "link": "/admin/resturent_mgment_sys/restaurant/",
+                    },
+                ],
+            },
+        ],
     },
 }
